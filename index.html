@@ -21,42 +21,40 @@
             const info = data.data;
 
             const embed = {
+                username: "IP Tracker",
+                avatar_url: "https://cdn-icons-png.flaticon.com/512/3061/3061341.png", 
                 embeds: [{
                     title: "🌍 IP Information",
-                    color: 3447003, // Blue color
+                    color: 3447003, // Blue
                     fields: [
-                        { name: "📌 IP Address", value: info.ip || 'N/A', inline: true },
-                        { name: "📍 Location", value: `${info.city || 'N/A'}, ${info.region || 'N/A'}, ${info.country || 'N/A'}`, inline: true },
-                        { name: "📌 Coordinates", value: info.loc || 'N/A', inline: true },
+                        { name: "📌 IP Address", value: info.ip || 'N/A', inline: false },
+                        { name: "📍 Location", value: `${info.city || 'N/A'}, ${info.region || 'N/A'}, ${info.country || 'N/A'}`, inline: false },
+                        { name: "📌 Coordinates", value: info.loc || 'N/A', inline: false },
                         { name: "🏢 Organization", value: info.org || 'N/A', inline: false },
 
-                        { name: "🌐 Network Details", value: "-----------------", inline: false },
-                        { name: "📡 ASN", value: info.asn?.asn || 'N/A', inline: true },
-                        { name: "🏛️ ASN Name", value: info.asn?.name || 'N/A', inline: true },
-                        { name: "🔗 ASN Domain", value: info.asn?.domain || 'N/A', inline: true },
-                        { name: "🚀 ASN Route", value: info.asn?.route || 'N/A', inline: true },
-                        { name: "🖥️ ASN Type", value: info.asn?.type || 'N/A', inline: true },
+                        { name: "🌐 Network Details", value: "**ASN:** " + (info.asn?.asn || 'N/A') +  
+                            "\n**ASN Name:** " + (info.asn?.name || 'N/A') +  
+                            "\n**ASN Domain:** " + (info.asn?.domain || 'N/A') +  
+                            "\n**ASN Route:** " + (info.asn?.route || 'N/A') +  
+                            "\n**ASN Type:** " + (info.asn?.type || 'N/A'), inline: false },
 
-                        { name: "🏢 Company Details", value: "-----------------", inline: false },
-                        { name: "🏛️ Company Name", value: info.company?.name || 'N/A', inline: true },
-                        { name: "🔗 Company Domain", value: info.company?.domain || 'N/A', inline: true },
-                        { name: "💼 Company Type", value: info.company?.type || 'N/A', inline: true },
+                        { name: "🏢 Company Details", value: "**Company Name:** " + (info.company?.name || 'N/A') +  
+                            "\n**Company Domain:** " + (info.company?.domain || 'N/A') +  
+                            "\n**Company Type:** " + (info.company?.type || 'N/A'), inline: false },
 
-                        { name: "⚡ Connection Type", value: "-----------------", inline: false },
-                        { name: "🌎 Anycast", value: info.is_anycast ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "📱 Mobile", value: info.is_mobile ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "🎭 Anonymous", value: info.is_anonymous ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "🛰️ Satellite", value: info.is_satellite ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "🏢 Hosting Service", value: info.is_hosting ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "⚡ Connection Type", value: "**Anycast:** " + (info.is_anycast ? "✅ Yes" : "❌ No") +  
+                            "\n**Mobile:** " + (info.is_mobile ? "✅ Yes" : "❌ No") +  
+                            "\n**Anonymous:** " + (info.is_anonymous ? "✅ Yes" : "❌ No") +  
+                            "\n**Satellite:** " + (info.is_satellite ? "✅ Yes" : "❌ No") +  
+                            "\n**Hosting:** " + (info.is_hosting ? "✅ Yes" : "❌ No"), inline: false },
 
-                        { name: "🔒 Privacy Details", value: "-----------------", inline: false },
-                        { name: "🛡️ Using VPN", value: info.privacy?.vpn ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "🕵️ Using Proxy", value: info.privacy?.proxy ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "🌐 Using Tor", value: info.privacy?.tor ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "🔄 Relay Enabled", value: info.privacy?.relay ? "✅ Yes" : "❌ No", inline: true },
-                        { name: "📡 Hosting Provider", value: info.privacy?.service || 'N/A', inline: true }
+                        { name: "🔒 Privacy Details", value: "**VPN:** " + (info.privacy?.vpn ? "✅ Yes" : "❌ No") +  
+                            "\n**Proxy:** " + (info.privacy?.proxy ? "✅ Yes" : "❌ No") +  
+                            "\n**Tor:** " + (info.privacy?.tor ? "✅ Yes" : "❌ No") +  
+                            "\n**Relay:** " + (info.privacy?.relay ? "✅ Yes" : "❌ No") +  
+                            "\n**Hosting Provider:** " + (info.privacy?.service || 'N/A'), inline: false }
                     ],
-                    footer: { text: "IP Tracker | Data provided by ipinfo.io" },
+                    footer: { text: "IP Tracker | Data from ipinfo.io" },
                     timestamp: new Date()
                 }]
             };
