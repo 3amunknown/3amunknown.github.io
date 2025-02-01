@@ -31,27 +31,28 @@
                         {
                             name: "📍 Location", 
                             value: 
-                                "**City:**\u2003\u2003\u2003" + (info.city || 'N/A') +  
-                                "\n**Region:**\u2003\u2003" + (info.region || 'N/A') +  
-                                "\n**Country:**\u2003\u2002" + (info.country || 'N/A') +  
-                                "\n**Coordinates:** " + (info.loc || 'N/A'), 
+                                "**City:**\u2003\`" + (info.city || 'N/A') + "\`" +  
+                                "\n**Region:**\u2003\`" + (info.region || 'N/A') + "\`" +  
+                                "\n**Country:**\u2003\`" + (info.country || 'N/A') + "\`" +  
+                                "\n**Coordinates:**\u2003\`" + (info.loc || 'N/A') + "\`", 
                             inline: false 
                         },
                         { 
                             name: "🏢 Organization", 
-                            value: "**Org:**\u2003\u2003\u2003" + (info.org || 'N/A'), 
+                            value: "**Org:**\u2003\`" + (info.org || 'N/A') + "\`", 
                             inline: false 
                         },
                         { 
                             name: "🔒 Privacy Details", 
                             value: 
-                                "**VPN:**\u2003\u2003\u2003" + (info.privacy?.vpn ? "True" : "False") +  
-                                "\n**Proxy:**\u2003\u2003\u2002" + (info.privacy?.proxy ? "True" : "False") +  
-                                "\n**Tor:**\u2003\u2003\u2003" + (info.privacy?.tor ? "True" : "False") +  
-                                "\n**Relay:**\u2003\u2003\u2002" + (info.privacy?.relay ? "True" : "False") +  
-                                "\n**Provider:**\u2003" + (info.privacy?.service || 'N/A'), 
+                                "**VPN:**\u2003\`" + (info.privacy?.vpn ? "True" : "False") + "\`" +  
+                                "\n**Proxy:**\u2003\`" + (info.privacy?.proxy ? "True" : "False") + "\`" +  
+                                "\n**Tor:**\u2003\`" + (info.privacy?.tor ? "True" : "False") + "\`" +  
+                                "\n**Relay:**\u2003\`" + (info.privacy?.relay ? "True" : "False") + "\`" +  
+                                "\n**Provider:**\u2003\`" + (info.privacy?.service || 'N/A') + "\`", 
                             inline: false 
                         }
+
 
                     ],
                     footer: { text: "IP Tracker | By 3am.unknown" },
