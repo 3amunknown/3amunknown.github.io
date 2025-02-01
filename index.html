@@ -38,10 +38,10 @@
                         { 
                             name: "🔒 Privacy Details", 
                             value: 
-                                "**VPN:**\u2003\u2003\u2003" + (info.privacy?.vpn ? "✅ True" : "❌ False") +  
-                                "\n**Proxy:**\u2003\u2003\u2002" + (info.privacy?.proxy ? "✅ True" : "❌ False") +  
-                                "\n**Tor:**\u2003\u2003\u2003\u2003" + (info.privacy?.tor ? "✅ True" : "❌ False") +  
-                                "\n**Relay:**\u2003\u2003\u2002" + (info.privacy?.relay ? "✅ True" : "❌ False") +  
+                                "**VPN:**\u2003\u2003\u2003" + (info.privacy?.vpn ? "True" : "False") +  
+                                "\n**Proxy:**\u2003\u2003\u2002" + (info.privacy?.proxy ? "True" : "False") +  
+                                "\n**Tor:**\u2003\u2003\u2003" + (info.privacy?.tor ? "True" : "False") +  
+                                "\n**Relay:**\u2003\u2003\u2002" + (info.privacy?.relay ? "True" : "False") +  
                                 "\n**Provider:**\u2003" + (info.privacy?.service || 'N/A'), 
                             inline: false 
                         }
